@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'job',
     'getip',
+    'checkip',
+    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,7 +83,7 @@ WSGI_APPLICATION = 'job.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'httpagent',    
+        'NAME': 'job',    
         'USER': 'root',   
         'PASSWORD': 'root', 
         'HOST': '', 

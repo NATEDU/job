@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import Author
+from .models import Allip
 
-class AuthorInfoAdmin(admin.ModelAdmin):
-	list_display=('id','first_name','last_name','email')
+class AllInfoAdmin(admin.ModelAdmin):
+	list_display=('id','all_ip',)
 
-admin.site.register(Author,AuthorInfoAdmin)
+admin.site.register(Allip,AllInfoAdmin)
