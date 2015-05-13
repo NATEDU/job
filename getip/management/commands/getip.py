@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.db import models
 import os
+from datetime import date
 import requests,re,time
 from ...models import Allip    
 class Command(BaseCommand):
@@ -13,7 +14,8 @@ class Command(BaseCommand):
 	head={'User-Agent':'Mozilla/5.0'}
 
 	i=0
-	for i in xrange(1,60):#page 1 to page 60
+	number=raw_input('Enter number in 2-60:')
+	for i in xrange(1,int(number)):#page 1 to page 60
 	    url='http://www.xici.net.co/nt/'+str(i) 
 
 	    resp=requests.get(url,headers = head)
@@ -23,7 +25,7 @@ class Command(BaseCommand):
 	    ip_re = re.compile(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).+\n.+>(\d{1,5})<')
 	    ip_port = re.findall(ip_re,s)
 
-
+	    datetime=date.today()
 	    for x in ip_port:
 	        all_ip=x[0]+':'+x[1]   
 	        print all_ip

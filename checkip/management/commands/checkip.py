@@ -20,16 +20,16 @@ class Command(BaseCommand):
 	a=Allip.objects.all()
 	for x in a:
 		allip_list.append(x.all_ip)
-
-	#for prox in random.sample(allip_list,20):
-	for prox in allip_list[33:55]:
+	randomNumber=raw_input('Enter TestNumber:')
+	for prox in random.sample(allip_list,int(randomNumber)):
+	#for prox in allip_list[33:55]:
 	    try:
 	        
 	        proxies = {'http':prox}
 	        d={'User-Agent':'Mozilla/5.0'}
 	                
 	        Tm_url="http://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.rSdc3y&id=40272354595&skuId=79919655679&areaId=110100&cat_id=50024400&rn=e5646f8d017a52f375b52f3ba95935ab&standard=1&user_id=1714128138&is_b=1"
-	        resp=requests.get(Tm_url,proxies=proxies,headers =d,timeout=2)
+	        resp=requests.get(Tm_url,proxies=proxies,headers =d,timeout=0.2)
 	        s=resp.content
 	        
 	        #bs=BeautifulSoup(s)
@@ -48,8 +48,8 @@ class Command(BaseCommand):
 	    except:
 	     
 	        pass
-	print 'pass',okip_list
-	print 'no pass',noip_list        
+	print 'okip_list',okip_list
+	print 'noip_list',noip_list        
 	for okip in okip_list:    
 		i=check_all_ip(ip=okip,test_ip=True)
 		i.save()
