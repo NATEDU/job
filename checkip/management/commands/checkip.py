@@ -20,7 +20,7 @@ class Command(BaseCommand):
 	a=Allip.objects.all()
 	for x in a:
 		allip_list.append(x.all_ip)
-	randomNumber=raw_input('Enter TestNumber:')
+	randomNumber=raw_input('Enter TestNumber 1-6000:')
 	for prox in random.sample(allip_list,int(randomNumber)):
 	#for prox in allip_list[33:55]:
 	    try:
